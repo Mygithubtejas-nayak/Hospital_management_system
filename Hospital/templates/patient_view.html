@@ -1,0 +1,89 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+	<br>
+	<br>
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Patient: {{patient.name}}</h5>
+			<hr>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'updatepatient' patient.id %}">Update Patient Details</a>
+			<br>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'deletepatient' patient.id %}">Delete</a>
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Patient Information</h5>
+			<hr>
+			<p>Type: {{patient.Patient_Type}}</p>
+			<p>Phone: {{patient.Mobile_number}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Contact Information</h5>
+			<hr>
+			<p>Email: {{patient.email}}</p>
+			<p>Phone: {{patient.Mobile_number}}</p>
+		</div>
+	</div>
+
+	<!-- <div class="col-md">
+		<div class="card card-body">
+			<h5>Total Orders</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px"></h1>
+		</div>
+	</div> -->
+</div>
+
+
+<br>
+<!-- <div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<form method="get">
+
+		    <button class="btn btn-primary" type="submit">Search</button>
+		  </form>
+		</div>
+	</div>
+	
+</div>
+<br> -->
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_billform' %}">Add a Bill</a>
+			<br>
+			<br>
+			<table class="table table-sm">
+				<tr>
+					<th>Type</th>
+					<th>Date</th>
+					<th>Amount</th>
+					<th>Comments</th>
+					<th>Update</th>
+					
+				</tr>     
+				{% for i in bill %}
+				<tr>
+					<td>{{i.type}}</td>
+					<td>{{i.Date}}</td>
+					<td>{{i.amount}}</td>
+					<td>{{i.Comments}}</td> 
+					<td><a class="btn btn-sm btn-info" href="{% url 'updatepatientbill' i.id %}">Update</a></td>
+					                           
+				</tr>
+				{% endfor %}
+
+{% endblock %}

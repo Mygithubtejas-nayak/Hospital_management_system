@@ -1,0 +1,29 @@
+{%  extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<br>
+<br>
+        <h1>Patient Profile</h1>
+        <div class="row">
+            <div class="col-md">
+                <div class="card card-body">
+                    
+                    <br>
+                    <table class="table table-sm">
+                        <tr>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Comments</th>
+                        </tr>     
+                        {% for i in bill %}
+                        <tr>
+                            <td>{{i.type}}</td>
+                            <td>{{i.Date}}</td>
+                            <td>{{i.amount}}</td>
+                            <td>{{i.Comments}}</td>                            
+                        </tr>
+                        {% endfor %}
+            {% endblock %}

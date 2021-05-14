@@ -1,0 +1,84 @@
+{%  extends 'main.html' %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block css %}
+
+    <link rel="stylesheet" href={% static "css/RegisterForm.css" %}>
+
+{% endblock css %}
+
+{% block content %}
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-lg-8 col-xl-7 mx-auto">
+        <div class="card card-signin flex-row my-5">
+          <div class="card-img-left d-none d-md-flex">
+             <!-- Background image for card set in CSS! -->
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Register</h5>
+            <form class="form-signin" method="POST" action="">
+                {% csrf_token %}
+              <div class="form-label-group">
+                {% render_field form.username type="text" class="form-control" id="inputUsername" placeholder="Username" %}
+                
+                <label for="inputUsername">Username</label>
+              </div>
+
+              <div class="form-label-group">
+                {% render_field form.email type="email" class="form-control" id="inputEmail" placeholder="Email" %}
+                
+                <label for="inputEmail">Email address</label>
+              </div>
+              
+              <div class="form-label-group">
+                {% render_field form.password1 type="password" class="form-control" id="inputPassword" placeholder="Password" %}
+                
+                <label for="inputPassword">Password</label>
+              </div>
+              
+              <div class="form-label-group">
+                {% render_field form.password2 type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" %}
+                
+                <label for="inputConfirmPassword">Confirm password</label>
+              </div>
+
+              <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" name="Create User">
+
+              <p class="d-block text-center mt-2 ">{{ form.errors }}</p>
+
+
+              
+
+              <div class="d-block text-center mt-2 ">Already have an account?<a class="d-block text-center mt-2 small" href={% url 'LoginForm' %}>Click to Login</a></div>
+              
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+<!--
+    <h3>RegisterForm</h3>
+    <form action="" method="post">
+        {{ form.username }}
+        {{ form.password2 }}
+        {{ form.email }}
+        {{ form.username }}
+        {{ form.password1 }}
+
+        <input type="submit" name="Create User">
+    </form>
+    -->
+
+{% endblock content %}

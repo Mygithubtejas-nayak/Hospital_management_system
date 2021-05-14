@@ -1,0 +1,69 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+
+{%  include 'status.html' %}
+
+<br>
+<div class="row">
+	<div class="col-md-5">
+		<h5>PATIENTS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'registration' %}">Add New Patient</a>
+			<hr>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Type</th>
+					<!-- <th>Update</th> -->
+				</tr>
+
+				{% for patient in patient %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'patient_view' patient.id %}">View</a></td>
+						<td>{{patient.name}}</td>
+						<td>{{patient.Patient_Type}}</td>
+						<!-- <td><a class="btn btn-sm btn-info" href="{% url 'updatepatient' patient.id %}">Update</a></td> -->
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>DOCTORS</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'create_doctorform' %}">Add New Doctor</a>
+			<hr>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Name</th>
+					<th>Specialization</th>
+					<th>Gender</th>
+				</tr>
+
+				{% for i in doctors %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'doctor_view' i.id %}">View</a></td>
+						<td>{{i.name}}</td>
+						<td>{{i.bio}}</td>
+						<td>{{i.gender}}</td>
+						<!-- <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="">Delete</a></td> -->
+
+					</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}

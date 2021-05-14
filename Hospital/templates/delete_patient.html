@@ -1,0 +1,24 @@
+{%  extends 'main.html' %}
+
+{% block content %}
+<br>
+<br>
+<br>     
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+        
+            <h5>Are you sure you want to delete the profile?</h5>
+
+            <form action="" method="POST">
+
+                {% csrf_token %}
+                <a class="btn btn-warning  btn-sm btn-block" href="{% url 'patient_view' patient.id %}">Cancel</a>
+
+                <input class="btn btn-danger  btn-sm btn-block" type="submit" name="Delete">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
